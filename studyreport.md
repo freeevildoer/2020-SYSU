@@ -95,3 +95,95 @@ ant还可以创建新的文件夹或者是删除文件或文件夹
 <delete dir = "src"/>
 ~~~
 
+## junit自学报告
+
+junit是java语言的单元测试框架，可以测试指定代码的正确性。Junit通过import org.junit.Test;   import static org.junit.Assert.*; 来使用其方法。上面的包中包含了类Assert，即断言，它具有多个方法来判断代码是否正确，如下表所示。
+
+| 方法名                                                  | 作用和藐视                                               |
+| ------------------------------------------------------- | -------------------------------------------------------- |
+| **void assertEquals(boolean expected, boolean actual)** | 检查两个变量或者等式是否平衡                             |
+| **void assertTrue(boolean expected, boolean actual)**   | 检查条件为真                                             |
+| **void assertFalse(boolean condition)**                 | 检查条件为假                                             |
+| **void assertNotNull(Object object)**                   | 检查对象不为空                                           |
+| **void assertNull(Object object)**                      | 检查对象为空                                             |
+| **void assertSame(boolean condition)**                  | assertSame() 方法检查两个相关对象是否指向同一个对象      |
+| **void assertNotSame(boolean condition)**               | assertNotSame() 方法检查两个相关对象是否不指向同一个对象 |
+| **void assertArrayEquals(expectedArray, resultArray)**  | assertArrayEquals() 方法检查两个数组是否相等             |
+
+
+
+我是通过Eclipse来使用Junit的测试功能的，我就以Eclipse为例来说明如何使用Junit判断要测试的代码是否正确。
+
+首先，我们先创立一个HelloWorld的项目，并创建一个Hello的包，在这个包下创建HelloWorld.java文件，代码如下：
+
+~~~java
+package Hello;
+
+public class HelloWorld {
+	String str;
+	public void Hello(){
+		str = "Hello world";
+	}
+	public String getStr() {
+		return str;
+	}
+}	
+~~~
+
+然后点这个项目，选择properties，选择java build path，选择 Add Library，最后选择junit。因为Eclipse在创建项目时默认不加入JUNIT，所以你需要手动添加。
+
+再添加之后，右键点击HelloWorld.java文件，选择new，在选择junit test。然后点击next，你对需要测试的函数确定，然后finish。此时它会给你生成一个测试类HelloWorldTest.java，而且会有需要测试的函数，如下所示，这时候你就需要调用上面所描述的Assert的方法，去实现代码测试。
+
+~~~java
+package Hello;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class HelloWorldTest {
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@Test
+	void testGetStr() {
+		fail("Not yet implemented");
+	}
+
+}
+
+
+
+~~~
+
+我们想要调用对应的方法，我们还需要继承TestCase类，这就需要我们插入新的包import junit.framework.TestCase; 插入后，我们需要将setup函数设置为protected类型，你可以在这个函数做点初始化的操作，也可以什么都不进行。我们所需要进行测试的地方在testGetStr()中，我们这里利用了 assertEquals方法去判断所函数所输出的字符串是否符合我们的需求。
+
+~~~java
+package Hello;
+
+import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.TestCase;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class HelloWorldTest extends TestCase {
+	HelloWorld helloworld = new HelloWorld();
+	@BeforeEach
+	protected void setUp() throws Exception {
+	}
+
+	@Test
+	void testGetStr() {
+		helloworld.Hello();
+		assertEquals("Hello world!",helloworld.getStr());
+	}
+
+}
+~~~
+
+
+
