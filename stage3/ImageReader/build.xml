@@ -9,7 +9,7 @@
 		<javac srcdir="." destdir="." includeantruntime="on">
 		<classpath>
 			<pathelement location=".:./../ImageReader.jar"/>
-			<pathelement location=".:./../junit-4.9.jar"/>
+			<!-- <pathelement location=".:./../junit-4.9.jar"/> -->
 		</classpath>
 		</javac>
 	</target>

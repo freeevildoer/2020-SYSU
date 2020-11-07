@@ -1,3 +1,4 @@
+package info.gridworld.maze;
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Flower;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  * A <code>MazeBug</code> can find its way in a maze. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
-public class MazeBug extends Bug {
+public class MazeBug2 extends Bug {
 	public Location next;
 	public boolean isEnd = false;
 	public Stack<ArrayList<Location>> crossLocation = new Stack<ArrayList<Location>>();
@@ -29,7 +30,7 @@ public class MazeBug extends Bug {
 	 * @param length
 	 *            the side length
 	 */
-	public MazeBug() {
+	public MazeBug2() {
 		setColor(Color.GREEN);
 	}
 
@@ -53,7 +54,7 @@ public class MazeBug extends Bug {
 		boolean willMove = canMove();
 		if (isEnd == true) {
 			setRightWay(trueWay);
-		<span style="white-space:pre">	</span>//to show step count when reach the goal
+//		<span style="white-space:pre">	</span>//to show step count when reach the goal
 			if (hasShown == false) {
 				String msg = stepCount.toString() + " steps";
 				JOptionPane.showMessageDialog(null, msg);

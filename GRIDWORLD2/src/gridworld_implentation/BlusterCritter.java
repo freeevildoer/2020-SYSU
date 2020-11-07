@@ -29,12 +29,17 @@ public class BlusterCritter extends Critter{
             if (a != null)
                 actors.add(a);
         }
-
+        
         return actors;
     }
     
     public void processActors(ArrayList<Actor> actors) {
         int n = actors.size();
+        for (Actor a : actors)
+        {
+            if (!(a instanceof Rock) && !(a instanceof Critter))
+                a.removeSelfFromGrid();
+        }
         if(n >= this.Courage) {
             Color c = getColor();
             int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));

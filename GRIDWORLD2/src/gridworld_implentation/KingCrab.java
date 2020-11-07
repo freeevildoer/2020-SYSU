@@ -14,15 +14,17 @@ public class KingCrab extends CrabCritter{
         Grid gr = getGrid();
         int[] dirs =
             { Location.AHEAD, Location.HALF_LEFT, Location.HALF_RIGHT };
-        for (Actor a : actors) {
-        	for(int d : dirs) {
-        		Location loc2 = a.getLocation().getAdjacentLocation(getDirection() + d);
-        		if(gr.isValid(loc2) && gr.get(loc2) == null)
-        			a.moveTo(loc2);
-        		else
-        			a.removeSelfFromGrid();
-        		
-        	}
+        Location loc = getLocation();
+       for (Actor a : actors) {
+    	   for(int d : dirs) {
+	        	if(a.getLocation().equals(loc.getAdjacentLocation(getDirection() + d))) {
+	        		Location loc2 = a.getLocation().getAdjacentLocation(getDirection() + d);
+	        		if(gr.isValid(loc2) && gr.get(loc2) == null)
+	        			a.moveTo(loc2);
+	        		else
+	       			a.removeSelfFromGrid();
+	        	}
+       		}
         }
    }
 }

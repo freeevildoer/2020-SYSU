@@ -50,6 +50,6 @@ public class Jumper extends Actor{
         if (!gr.isValid(next))
             return false;
         Actor neighbor = gr.get(next);
-        return (neighbor == null)|| (neighbor instanceof Flower);
+        return (neighbor == null);
 	}
 }

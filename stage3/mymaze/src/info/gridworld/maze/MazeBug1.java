@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 
 
-public class MazeBug extends Bug {
+public class MazeBug1 extends Bug {
 	public Location next;
 	public Location last;
 	public boolean isEnd = false;
@@ -36,7 +36,7 @@ public class MazeBug extends Bug {
 	 * @param length
 	 *            the side length
 	 */
-	public MazeBug() {
+	public MazeBug1() {
 		setColor(Color.GREEN);
 		last = null;
 		next = null;
